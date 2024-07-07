@@ -26,7 +26,7 @@ export default async function handler(
   res: NextApiResponse<Movie[]>
 ) {
   const model = await use.load();
-  const embeddings = await model.embed(req.body.search);
+  const embeddings = await model.embed(req.query.search);
   const embeddingArray = embeddings.arraySync()[0];
 
   const client = new pg.Client(config);

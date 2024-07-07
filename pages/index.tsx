@@ -17,15 +17,12 @@ export default function Home() {
     const enteredSearch = searchInput.current?.value;
     setIsLoading(true);
 
-    fetch("/api/recommendations", {
-      method: "POST",
-      body: JSON.stringify({
-        search: enteredSearch,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `/api/recommendations?search=${encodeURIComponent(enteredSearch || "")}`,
+      {
+        method: "GET",
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         setMoviePlots(data);
@@ -117,7 +114,6 @@ export default function Home() {
               key={item.title}
               className="relative p-10 text-white text-lg rounded-lg binline-block justify-start shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] items-start"
             >
-              
               <div>
                 <h4 className="opacity-90 text-xl">From {item.director}</h4>
                 <p className="opacity-50 text-sm">Year {item.year}</p>
