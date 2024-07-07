@@ -1,6 +1,6 @@
 const { readFileSync } = require("fs");
 const pg = require("pg");
-const tf = require("@tensorflow/tfjs-node");
+import * as tf from '@tensorflow/tfjs';
 const use = require("@tensorflow-models/universal-sentence-encoder");
 import Movie from "@/movie";
 import type { NextApiRequest, NextApiResponse } from "next";
