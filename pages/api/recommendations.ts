@@ -1,6 +1,6 @@
 const { readFileSync } = require("fs");
 const pg = require("pg");
-import * as tf from '@tensorflow/tfjs';
+require("@tensorflow/tfjs");
 const use = require("@tensorflow-models/universal-sentence-encoder");
 import Movie from "@/movie";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -16,8 +16,6 @@ const config = {
     ca: readFileSync("./certificates/ca.pem").toString(),
   },
 };
-
-
 
 type Data = {
   name: string;
