@@ -38,7 +38,7 @@ export default async function handler(
     const pgResponse = await client.query(
       `SELECT * FROM movie_plots ORDER BY embedding <-> '${JSON.stringify(
         embeddingArray
-      )}' LIMIT 20;`
+      )}' LIMIT 5;`
     );
     res.status(200).json(pgResponse.rows);
   } catch (err) {
