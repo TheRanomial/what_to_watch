@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { FormEvent, Suspense, useRef, useState } from "react";
 import Movie from "@/movie";
-import Spinner from "./_components/Spinner";
 
 const inter = Inter({ subsets: ["latin"] });
 
