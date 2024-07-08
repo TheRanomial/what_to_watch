@@ -1,9 +1,12 @@
-const { readFileSync } = require("fs");
+const { readFileSync} = require("fs");
 const pg = require("pg");
 require("@tensorflow/tfjs");
 const use = require("@tensorflow-models/universal-sentence-encoder");
 import Movie from "@/movie";
 import type { NextApiRequest, NextApiResponse } from "next";
+import path from "path";
+
+const caCertPath = path.resolve('./certificates/ca.pem');
 
 const config = {
   user: process.env.PG_NAME,
@@ -13,7 +16,7 @@ const config = {
   database: "defaultdb",
   ssl: {
     rejectUnauthorized: true,
-    ca: readFileSync("./certificates/ca.pem").toString(),
+    ca: readFileSync(caCertPath).toString(),
   },
 };
 
